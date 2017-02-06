@@ -10,6 +10,10 @@ namespace DiscountCut
     {
         public static void Main(string[] args)
         {
+            HairThreader ht = new HairThreader();
+            ht.MakeThreads();
+            ht.Runthreads();
+            Console.ReadKey();
         }
     }
 }

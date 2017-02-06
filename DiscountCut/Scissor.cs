@@ -44,16 +44,13 @@ namespace DiscountCut
         #endregion
 
         #region Constructors
-        public Scissor()
+        public Scissor(string designation)
         {
+            _designation = designation;
             _isAvailable = true;
         }
         #endregion
 
-        #region Methods
-
-       
-
-        #endregion
+     
     }
 }

@@ -55,10 +55,12 @@ namespace DiscountCut
             _sessionsLeft = 10;
         }
 
-        public Chair(Scissor leftScissor, Scissor rightScissor)
+        public Chair(string designation, Scissor leftScissor, Scissor rightScissor)
         {
+            _designation = designation;
             _leftScissor = leftScissor;
             _rightScissor = rightScissor;
+            _sessionsLeft = 10;
         }
         #endregion
 
@@ -74,27 +76,36 @@ namespace DiscountCut
             _sessionsLeft--;
             _leftScissor.IsAvailable = true;
             _rightScissor.IsAvailable = true;
+            
 
         }
 
         public void TryGetScissors()
         {
+            
             lock (_lockPad)
             {
                 if (_leftScissor.IsAvailable != true && _rightScissor.IsAvailable != true)
                 {
-                    Monitor.PulseAll(_lockPad);
+                    Monitor.Pulse(_lockPad);
                     Thread.Sleep(GiveInterval());                                           
                 }
                 else
                 {
                     _leftScissor.IsAvailable = false;
                     _rightScissor.IsAvailable = false;
-                    Thread.Sleep(GiveInterval());
+                     
+                    Console.WriteLine("Chair " + this._designation + " is using Scissors: " + this._leftScissor.Designation 
+                                    + " and " + this._rightScissor.Designation);
+                   
                     CompleteSession();
-                    Console.WriteLine("Chair " + this._designation + " is using Scissors: " + this._leftScissor + " and" + this._rightScissor);
-                    
-                }
+                    Console.WriteLine("Chair " + this._designation + " released Scissors: " + this._leftScissor.Designation
+                                    + " and " + this._rightScissor.Designation);
+
+                    Thread.Sleep(GiveInterval()); // I'm doing work.
+
+
+                    }
             }
         }
 
