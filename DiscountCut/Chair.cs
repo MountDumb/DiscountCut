@@ -95,12 +95,14 @@ namespace DiscountCut
                     _leftScissor.IsAvailable = false;
                     _rightScissor.IsAvailable = false;
                      
-                    Console.WriteLine("Chair " + this._designation + " is using Scissors: " + this._leftScissor.Designation 
-                                    + " and " + this._rightScissor.Designation);
+                    Console.WriteLine("Chair " + this._designation + " has " + this._sessionsLeft + " sessions left" 
+                                               + " and " + " is using Scissors: " + this._leftScissor.Designation 
+                                               + " and " + this._rightScissor.Designation);
                    
                     CompleteSession();
                     Console.WriteLine("Chair " + this._designation + " released Scissors: " + this._leftScissor.Designation
                                     + " and " + this._rightScissor.Designation);
+                    Console.WriteLine("Chair " + this._designation + " has " + this._sessionsLeft + " sessions left");
 
                     Thread.Sleep(GiveInterval()); // I'm doing work.
 

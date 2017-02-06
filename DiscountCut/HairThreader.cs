@@ -60,9 +60,9 @@ namespace DiscountCut
         {
             while (chair.SessionsLeft > 0) 
             {
-                Console.WriteLine("Chair " + chair.Designation + " has " + chair.SessionsLeft + " sessions left");
-                chair.TryGetScissors();
                 
+                chair.TryGetScissors();
+                                
             }
             if (chair.SessionsLeft == 0)
             {
@@ -80,6 +80,7 @@ namespace DiscountCut
             t4 = new Thread(() => RunHair(d));
             t5 = new Thread(() => RunHair(e));
             t6 = new Thread(() => RunHair(f));
+            
         }
 
         public void Runthreads()
