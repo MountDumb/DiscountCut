@@ -86,15 +86,15 @@ namespace DiscountCut
         public void Runthreads()
         {
             t1.Start();
-            Thread.Sleep(10);
+            //Thread.Sleep(10);
             t2.Start();
-            Thread.Sleep(10);
+            //Thread.Sleep(10);
             t3.Start();
-            Thread.Sleep(10);
+           // Thread.Sleep(10);
             t4.Start();
-            Thread.Sleep(10);
+            //Thread.Sleep(10);
             t5.Start();
-            Thread.Sleep(10);
+            //Thread.Sleep(10);
             t6.Start();
         }
        

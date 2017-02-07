@@ -82,10 +82,10 @@ namespace DiscountCut
 
         public void TryGetScissors()
         {
-        
+
             lock (_lockPad)
             {
-                    if (_leftScissor.IsAvailable != true && _rightScissor.IsAvailable != true)
+                if (_leftScissor.IsAvailable != true && _rightScissor.IsAvailable != true)
                     {
                         Monitor.Pulse(_lockPad);
                         Thread.Sleep(GiveInterval());
