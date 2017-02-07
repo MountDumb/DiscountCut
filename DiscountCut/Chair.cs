@@ -82,32 +82,33 @@ namespace DiscountCut
 
         public void TryGetScissors()
         {
-            
+        
             lock (_lockPad)
             {
-                if (_leftScissor.IsAvailable != true && _rightScissor.IsAvailable != true)
-                {
-                    Monitor.Pulse(_lockPad);
-                    Thread.Sleep(GiveInterval());                                           
-                }
-                else
-                {
-                    _leftScissor.IsAvailable = false;
-                    _rightScissor.IsAvailable = false;
-                     
-                    Console.WriteLine("Chair " + this._designation + " has " + this._sessionsLeft + " sessions left" 
-                                               + " and " + " is using Scissors: " + this._leftScissor.Designation 
-                                               + " and " + this._rightScissor.Designation);
-                   
-                    CompleteSession();
-                    Console.WriteLine("Chair " + this._designation + " released Scissors: " + this._leftScissor.Designation
-                                    + " and " + this._rightScissor.Designation);
-                    Console.WriteLine("Chair " + this._designation + " has " + this._sessionsLeft + " sessions left");
+                    if (_leftScissor.IsAvailable != true && _rightScissor.IsAvailable != true)
+                    {
+                        Monitor.Pulse(_lockPad);
+                        Thread.Sleep(GiveInterval());
+                    }
+                    else
+                    {
+                        _leftScissor.IsAvailable = false;
+                        _rightScissor.IsAvailable = false;
 
-                    Thread.Sleep(GiveInterval()); // I'm doing work.
+                        Console.WriteLine("Chair " + this._designation + " has " + this._sessionsLeft + " sessions left"
+                                                   + " and " + " is using Scissors: " + this._leftScissor.Designation
+                                                   + " and " + this._rightScissor.Designation);
+
+                        CompleteSession();
+                        Console.WriteLine("Chair " + this._designation + " released Scissors: " + this._leftScissor.Designation
+                                        + " and " + this._rightScissor.Designation);
+                        Console.WriteLine("Chair " + this._designation + " has " + this._sessionsLeft + " sessions left");
+
+                        Thread.Sleep(GiveInterval()); // I'm doing work.
 
 
                     }
+                
             }
         }
 
